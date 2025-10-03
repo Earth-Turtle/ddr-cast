@@ -2,11 +2,15 @@
 
 [ext_resource type="Script" uid="uid://bs7fywcabn11q" path="res://main.gd" id="1_ig7tw"]
 
-[node name="Game" type="Node2D"]
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_ig7tw")
 
 [node name="Container" type="HBoxContainer" parent="."]
-anchors_preset = 10
-anchor_right = 1.0
-grow_horizontal = 2
+layout_mode = 0
 size_flags_horizontal = 3
