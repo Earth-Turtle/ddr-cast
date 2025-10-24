@@ -1,24 +1,28 @@
-[gd_scene load_steps=6 format=3 uid="uid://bxoybsjdxf536"]
+[gd_scene load_steps=8 format=3 uid="uid://bxoybsjdxf536"]
 
 [ext_resource type="Texture2D" uid="uid://n46xnh6d2b8b" path="res://icons/gravity-ui--triangle-exclamation.png" id="1_clccs"]
+[ext_resource type="Script" uid="uid://7gn15v53rh00" path="res://HUD/spell_card.gd" id="1_f0pg0"]
 [ext_resource type="Texture2D" uid="uid://c5vk5f0wvnmko" path="res://icons/gravity-ui--arrow-shape-down.png" id="2_f0pg0"]
 [ext_resource type="Texture2D" uid="uid://bu1hxkhve7evs" path="res://icons/gravity-ui--arrow-shape-left.png" id="3_dos6q"]
 [ext_resource type="Texture2D" uid="uid://c6oadq61n317r" path="res://icons/gravity-ui--arrow-shape-up.png" id="4_10skr"]
 [ext_resource type="Texture2D" uid="uid://bbcs02lqodlsx" path="res://icons/gravity-ui--arrow-shape-right.png" id="5_4xfya"]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dos6q"]
+
 [node name="SpellCard" type="Control"]
 layout_mode = 3
 anchors_preset = 0
+script = ExtResource("1_f0pg0")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 0
 offset_right = 237.0
 offset_bottom = 100.0
 
-[node name="AspectRatioContainer" type="AspectRatioContainer" parent="HBoxContainer"]
+[node name="SquareAspectRatio" type="AspectRatioContainer" parent="HBoxContainer"]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="HBoxContainer/AspectRatioContainer"]
+[node name="SpellIcon" type="TextureRect" parent="HBoxContainer/SquareAspectRatio"]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 texture = ExtResource("1_clccs")
@@ -27,32 +31,41 @@ expand_mode = 1
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 4
+
+[node name="SpellTitle" type="Label" parent="HBoxContainer/VBoxContainer/MarginContainer"]
 layout_mode = 2
 text = "Spell placeholder"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer"]
+[node name="HSeparator" type="HSeparator" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/separator = SubResource("StyleBoxEmpty_dos6q")
+
+[node name="ArrowArray" type="HBoxContainer" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="HBoxContainer/VBoxContainer/HBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/VBoxContainer/ArrowArray"]
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 texture = ExtResource("2_f0pg0")
 expand_mode = 1
 
-[node name="TextureRect2" type="TextureRect" parent="HBoxContainer/VBoxContainer/HBoxContainer"]
+[node name="TextureRect2" type="TextureRect" parent="HBoxContainer/VBoxContainer/ArrowArray"]
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 texture = ExtResource("3_dos6q")
 expand_mode = 1
 
-[node name="TextureRect4" type="TextureRect" parent="HBoxContainer/VBoxContainer/HBoxContainer"]
+[node name="TextureRect4" type="TextureRect" parent="HBoxContainer/VBoxContainer/ArrowArray"]
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 texture = ExtResource("4_10skr")
 expand_mode = 1
 
-[node name="TextureRect3" type="TextureRect" parent="HBoxContainer/VBoxContainer/HBoxContainer"]
+[node name="TextureRect3" type="TextureRect" parent="HBoxContainer/VBoxContainer/ArrowArray"]
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 texture = ExtResource("5_4xfya")
