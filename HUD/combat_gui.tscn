@@ -1,4 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://c44vivop2a02b"]
+[gd_scene load_steps=3 format=3 uid="uid://c44vivop2a02b"]
+
+[ext_resource type="Script" uid="uid://cqcki1lqvedly" path="res://HUD/spellbook_display.gd" id="1_2i3ir"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ut4pv"]
 bg_color = Color(0.5803922, 0.8509804, 1, 0.34509805)
@@ -37,21 +39,28 @@ layout_mode = 2
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Container/MarginContainer"]
 layout_mode = 2
 
-[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/Container/MarginContainer/VBoxContainer"]
+[node name="PreparedSpellsBackground" type="PanelContainer" parent="MarginContainer/Container/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_ut4pv")
+script = ExtResource("1_2i3ir")
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Container/MarginContainer/VBoxContainer/PanelContainer"]
+[node name="SpellbookOuterMargin" type="MarginContainer" parent="MarginContainer/Container/MarginContainer/VBoxContainer/PreparedSpellsBackground"]
 layout_mode = 2
 theme_override_constants/margin_left = 8
 theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Container/MarginContainer/VBoxContainer/PanelContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Container/MarginContainer/VBoxContainer/PreparedSpellsBackground/SpellbookOuterMargin"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MarginContainer/Container/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="SpellbookTitle" type="Label" parent="MarginContainer/Container/MarginContainer/VBoxContainer/PreparedSpellsBackground/SpellbookOuterMargin/VBoxContainer"]
 layout_mode = 2
 text = "Prepared spells"
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/Container/MarginContainer/VBoxContainer/PreparedSpellsBackground/SpellbookOuterMargin/VBoxContainer"]
+layout_mode = 2
+
+[node name="SpellCards" type="VBoxContainer" parent="MarginContainer/Container/MarginContainer/VBoxContainer/PreparedSpellsBackground/SpellbookOuterMargin/VBoxContainer"]
+layout_mode = 2
