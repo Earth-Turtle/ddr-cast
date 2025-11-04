@@ -1,6 +1,8 @@
+
+## Data class for holding a sequence of inputs for a spell. 
 class_name SpellInput extends RefCounted
 
-var inputs: Array[ComplexityCalculator.Direction] = []
+var input_pattern: Array[ComplexityCalculator.Direction] = []
 ## Always greater than or equal to 1
 var complexity: float = -1.0
 

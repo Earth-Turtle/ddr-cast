@@ -6,6 +6,9 @@ var prepared_spells: Array[BaseSpell] = []:
 		
 @onready var spell_cards_list = $Spellcards
 
+signal spell_added(spell: BaseSpell, spell_input: SpellInput)
+signal spell_removed(spell: BaseSpell, spell_input: SpellInput)
+
 func add_spell(spell: BaseSpell):
 	prepared_spells.append(spell)
 	

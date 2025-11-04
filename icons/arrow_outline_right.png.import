@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bu1hxkhve7evs"
-path="res://.godot/imported/gravity-ui--arrow-shape-left.png-e5511ec2341cffbe67d923cb838c1c9f.ctex"
+uid="uid://bbcs02lqodlsx"
+path="res://.godot/imported/arrow_outline_right.png-7352693de82cc5d9900f9663181d99c8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://icons/gravity-ui--arrow-shape-left.png"
-dest_files=["res://.godot/imported/gravity-ui--arrow-shape-left.png-e5511ec2341cffbe67d923cb838c1c9f.ctex"]
+source_file="res://icons/arrow_outline_right.png"
+dest_files=["res://.godot/imported/arrow_outline_right.png-7352693de82cc5d9900f9663181d99c8.ctex"]
 
 [params]
 
