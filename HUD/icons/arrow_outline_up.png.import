@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://n46xnh6d2b8b"
-path="res://.godot/imported/triangle_warning.png-7940f49a2ccc732c4f1a490b436d555b.ctex"
+uid="uid://c6oadq61n317r"
+path="res://.godot/imported/arrow_outline_up.png-1f30ec3429caa6e800d1f1bf968a8019.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://icons/triangle_warning.png"
-dest_files=["res://.godot/imported/triangle_warning.png-7940f49a2ccc732c4f1a490b436d555b.ctex"]
+source_file="res://HUD/icons/arrow_outline_up.png"
+dest_files=["res://.godot/imported/arrow_outline_up.png-1f30ec3429caa6e800d1f1bf968a8019.ctex"]
 
 [params]
 

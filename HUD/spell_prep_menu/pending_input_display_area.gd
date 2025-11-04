@@ -1,10 +1,10 @@
 extends HBoxContainer
 
 const directions: Dictionary[String, Texture] = {
-	"spell_input_left": preload("res://icons/arrow_outline_left.png"),
-	"spell_input_up": preload("res://icons/arrow_outline_up.png"),
-	"spell_input_right": preload("res://icons/arrow_outline_right.png"),
-	"spell_input_down": preload("res://icons/arrow_outline_down.png"),
+	"spell_input_left": preload("res://HUD/icons/arrow_outline_left.png"),
+	"spell_input_up": preload("res://HUD/icons/arrow_outline_up.png"),
+	"spell_input_right": preload("res://HUD/icons/arrow_outline_right.png"),
+	"spell_input_down": preload("res://HUD/icons/arrow_outline_down.png"),
 }
 
 signal input_complete(inputs: Array[TextureRect])

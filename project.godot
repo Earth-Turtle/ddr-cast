@@ -29,6 +29,10 @@ window/stretch/mode="viewport"
 window/stretch/aspect="expand"
 window/canvas_textures/default_texture_filter=0
 
+[dotnet]
+
+project/assembly_name="ddr-cast"
+
 [input]
 
 spell_input_left={

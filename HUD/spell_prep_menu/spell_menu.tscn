@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dhc1cc2xj8t05"]
 
-[ext_resource type="Script" uid="uid://bb58s3y07t0fb" path="res://pending_input_display_area.gd" id="1_ql2jl"]
-[ext_resource type="Script" uid="uid://cik0lrwqy5m15" path="res://spell_menu.gd" id="1_tkpn0"]
+[ext_resource type="Script" uid="uid://bb58s3y07t0fb" path="res://HUD/spell_prep_menu/pending_input_display_area.gd" id="1_ql2jl"]
+[ext_resource type="Script" uid="uid://cik0lrwqy5m15" path="res://HUD/spell_prep_menu/spell_menu.gd" id="1_tkpn0"]
 
 [node name="SpellMenu" type="Control"]
 layout_mode = 3

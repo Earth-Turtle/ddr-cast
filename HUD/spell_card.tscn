@@ -1,11 +1,11 @@
 [gd_scene load_steps=8 format=3 uid="uid://bxoybsjdxf536"]
 
-[ext_resource type="Texture2D" uid="uid://n46xnh6d2b8b" path="res://icons/triangle_warning.png" id="1_clccs"]
+[ext_resource type="Texture2D" uid="uid://n46xnh6d2b8b" path="res://HUD/icons/triangle_warning.png" id="1_clccs"]
 [ext_resource type="Script" uid="uid://7gn15v53rh00" path="res://HUD/spell_card.gd" id="1_f0pg0"]
-[ext_resource type="Texture2D" uid="uid://bh5bgfl16utmd" path="res://icons/arrow_outline_down.png" id="2_f0pg0"]
-[ext_resource type="Texture2D" uid="uid://bu1hxkhve7evs" path="res://icons/arrow_outline_left.png" id="3_dos6q"]
-[ext_resource type="Texture2D" uid="uid://c6oadq61n317r" path="res://icons/arrow_outline_up.png" id="4_10skr"]
-[ext_resource type="Texture2D" uid="uid://bbcs02lqodlsx" path="res://icons/arrow_outline_right.png" id="5_4xfya"]
+[ext_resource type="Texture2D" uid="uid://bh5bgfl16utmd" path="res://HUD/icons/arrow_outline_down.png" id="2_f0pg0"]
+[ext_resource type="Texture2D" uid="uid://bu1hxkhve7evs" path="res://HUD/icons/arrow_outline_left.png" id="3_dos6q"]
+[ext_resource type="Texture2D" uid="uid://c6oadq61n317r" path="res://HUD/icons/arrow_outline_up.png" id="4_10skr"]
+[ext_resource type="Texture2D" uid="uid://bbcs02lqodlsx" path="res://HUD/icons/arrow_outline_right.png" id="5_4xfya"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dos6q"]
 

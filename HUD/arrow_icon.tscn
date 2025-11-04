@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://3kb862bhpge6"]
+
+[ext_resource type="Texture2D" uid="uid://n46xnh6d2b8b" path="res://HUD/icons/triangle_warning.png" id="1_4qj6v"]
+
+[node name="ArrowIcon" type="TextureRect"]
+offset_right = 256.0
+offset_bottom = 256.0
+texture = ExtResource("1_4qj6v")
+stretch_mode = 3
