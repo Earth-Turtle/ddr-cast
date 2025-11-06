@@ -26,7 +26,7 @@ func _init(spell: BaseSpell, input: Array[ComplexityCalculator.Direction]) -> vo
 	spell_icon = spell.icon_texture
 	spell_input = input
 
-# Mostly just set up the arrows 
+# Mostly just set up the arrows
 func _ready() -> void:
 	for dir in spell_input:
 		var dir_icon = TextureRect.new()
@@ -34,7 +34,7 @@ func _ready() -> void:
 		dir_icon.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 		dir_icon.stretch_mode = TextureRect.STRETCH_SCALE
 		$HBoxContainer/VBoxContainer/ArrowArray.add_child(dir_icon)
-	
+
 ## Returns true if the input is correct for the next step
 func pass_input(input: ComplexityCalculator.Direction) -> bool:
 	if cast_state == CastState.FAILED:
@@ -44,7 +44,7 @@ func pass_input(input: ComplexityCalculator.Direction) -> bool:
 		spell_failed.emit(cast_progress)
 		cast_progress = []
 		return false
-	else: 
+	else:
 		cast_progress.append(input)
 		return true
 
@@ -52,13 +52,13 @@ func pass_input(input: ComplexityCalculator.Direction) -> bool:
 func reset_cast() -> void:
 	cast_progress = []
 	cast_state = CastState.IDLE
-	
+
 func _update_icons():
 	if cast_state == CastState.IDLE:
 		for texture_child in $HBoxContainer/VBoxContainer/ArrowArray.get_children():
 			# Reset to full opacity
 			pass
-	if cast_state == CastState.FAILED: 
+	if cast_state == CastState.FAILED:
 		for texture_child in $HBoxContainer/VBoxContainer/ArrowArray.get_children():
 			# super-fade, spell invalid
 			pass
@@ -71,4 +71,4 @@ func _update_icons():
 				# highlight section of successfuly cast spell
 			else:
 				# slightly fade rest of the spell
-				pass 
+				pass
