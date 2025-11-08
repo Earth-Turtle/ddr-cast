@@ -1,7 +1,41 @@
-[gd_scene load_steps=3 format=3 uid="uid://dhc1cc2xj8t05"]
+[gd_scene load_steps=2 format=3 uid="uid://dhc1cc2xj8t05"]
 
-[ext_resource type="Script" uid="uid://bb58s3y07t0fb" path="res://HUD/spell_prep_menu/pending_input_display_area.gd" id="1_ql2jl"]
-[ext_resource type="Script" uid="uid://cik0lrwqy5m15" path="res://HUD/spell_prep_menu/spell_menu.gd" id="1_tkpn0"]
+[sub_resource type="GDScript" id="GDScript_kqg08"]
+script/source = "extends HBoxContainer
+
+const directions: Dictionary[String, Texture] = {
+	\"spell_input_left\": preload(\"res://HUD/icons/arrow_outline_left.png\"),
+	\"spell_input_up\": preload(\"res://HUD/icons/arrow_outline_up.png\"),
+	\"spell_input_right\": preload(\"res://HUD/icons/arrow_outline_right.png\"),
+	\"spell_input_down\": preload(\"res://HUD/icons/arrow_outline_down.png\"),
+}
+
+signal input_complete(inputs: Array[TextureRect])
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_released(\"spell_input_down\"):
+		var texture_rect = TextureRect.new()
+		texture_rect.texture = directions[\"spell_input_down\"]
+		add_child(texture_rect)
+	elif event.is_action_released(\"spell_input_left\"):
+		var texture_rect = TextureRect.new()
+		texture_rect.texture = directions[\"spell_input_left\"]
+		add_child(texture_rect)
+	elif event.is_action_released(\"spell_input_right\"):
+		var texture_rect = TextureRect.new()
+		texture_rect.texture = directions[\"spell_input_right\"]
+		add_child(texture_rect)
+	elif event.is_action_released(\"spell_input_up\"):
+		var texture_rect = TextureRect.new()
+		texture_rect.texture = directions[\"spell_input_up\"]
+		texture_rect.expand_mode = TextureRect.EXPAND_KEEP_SIZE
+		texture_rect.stretch_mode = TextureRect.STRETCH_KEEP
+		add_child(texture_rect)
+	elif event.is_action_released(\"ui_accept\"):
+		input_complete.emit(get_children())
+		for n in get_children():
+			n.queue_free()
+"
 
 [node name="SpellMenu" type="Control"]
 layout_mode = 3
@@ -10,7 +44,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_tkpn0")
 metadata/_edit_lock_ = true
 
 [node name="OuterBorder" type="MarginContainer" parent="."]
@@ -34,6 +67,6 @@ layout_mode = 2
 
 [node name="PendingInputDisplayArea" type="HBoxContainer" parent="OuterBorder/HBoxContainer"]
 layout_mode = 2
-script = ExtResource("1_ql2jl")
+script = SubResource("GDScript_kqg08")
 
 [connection signal="input_complete" from="OuterBorder/HBoxContainer/PendingInputDisplayArea" to="." method="_on_pending_input_display_area_input_complete"]

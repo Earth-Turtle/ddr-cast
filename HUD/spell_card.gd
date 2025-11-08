@@ -1,7 +1,7 @@
 class_name SpellCard extends Control
 
 @export var spell_name: String = "Placeholder spell"
-@export var spell_icon: Texture = preload("res://icons/triangle_warning.png")
+@export var spell_icon: Texture = preload("res://HUD/icons/triangle_warning.png")
 @export var spell_input: Array[ComplexityCalculator.Direction] = []
 
 enum CastState {IDLE, IN_PROGRESS, COMPLETED, FAILED}
@@ -14,11 +14,11 @@ signal spell_failed(inputs_so_far: Array[ComplexityCalculator.Direction])
 ## cast_progress > 0 and < spell_input.length: cast in progress, cast_progress icons should be fully visible
 var cast_progress: Array[ComplexityCalculator.Direction] = []
 var cast_state: CastState = CastState.IDLE
-const empty_arrow_icons = {
-	ComplexityCalculator.Direction.RIGHT: preload("res://icons/arrow_outline_right.png"),
-	ComplexityCalculator.Direction.UP: preload("res://icons/arrow_outline_up.png"),
-	ComplexityCalculator.Direction.DOWN: preload("res://icons/arrow_outline_down.png"),
-	ComplexityCalculator.Direction.LEFT: preload("res://icons/arrow_outline_left.png"),
+const empty_arrow_icons: Dictionary[Variant, Variant] = {
+	ComplexityCalculator.Direction.RIGHT: preload("res://HUD/icons/arrow_outline_right.png"),
+	ComplexityCalculator.Direction.UP: preload("res://HUD/icons/arrow_outline_up.png"),
+	ComplexityCalculator.Direction.DOWN: preload("res://HUD/icons/arrow_outline_down.png"),
+	ComplexityCalculator.Direction.LEFT: preload("res://HUD/icons/arrow_outline_left.png"),
 }
 
 func _init(spell: BaseSpell, input: Array[ComplexityCalculator.Direction]) -> void:

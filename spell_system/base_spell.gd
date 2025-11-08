@@ -1,6 +1,6 @@
 @abstract class_name BaseSpell extends Node
 
-var icon_texture: Texture = preload("res://icons/triangle_warning.png")
+var icon_texture: Texture = preload("res://HUD/icons/triangle_warning.png")
 var spell_name: String = "Spell placeholder"
 
 ## Emitted when this spell is cast

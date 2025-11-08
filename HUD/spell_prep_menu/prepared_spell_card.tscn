@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://kp73d361vqal"]
+
+[ext_resource type="Script" uid="uid://dv2vu52lyxilc" path="res://HUD/spell_prep_menu/PreparedSpellCard.cs" id="1_tcbtv"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mcgsm"]
+
+[node name="PreparedSpellCard" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_tcbtv")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="SpellSelection" type="OptionButton" parent="VBoxContainer"]
+layout_mode = 2
+selected = 0
+allow_reselect = true
+item_count = 2
+popup/item_0/text = "Fireball"
+popup/item_0/id = 0
+popup/item_1/text = "Ice Shard"
+popup/item_1/id = 1
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_mcgsm")
+
+[node name="SpellInputs" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
