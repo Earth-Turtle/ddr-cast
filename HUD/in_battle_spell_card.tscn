@@ -1,0 +1,44 @@
+[gd_scene load_steps=4 format=3 uid="uid://bxoybsjdxf536"]
+
+[ext_resource type="Script" uid="uid://chsyxsap48clo" path="res://HUD/InBattleSpellCard.cs" id="1_3d0o6"]
+[ext_resource type="Texture2D" uid="uid://n46xnh6d2b8b" path="res://HUD/icons/triangle_warning.png" id="2_k2xke"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dos6q"]
+
+[node name="SpellCard" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_3d0o6")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 237.0
+offset_bottom = 100.0
+
+[node name="SquareAspectRatio" type="AspectRatioContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="SpellIcon" type="TextureRect" parent="HBoxContainer/SquareAspectRatio"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+texture = ExtResource("2_k2xke")
+expand_mode = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 4
+
+[node name="SpellTitle" type="Label" parent="HBoxContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+text = "Spell placeholder"
+
+[node name="HSeparator" type="HSeparator" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/separator = SubResource("StyleBoxEmpty_dos6q")
+
+[node name="ArrowArray" type="HBoxContainer" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2

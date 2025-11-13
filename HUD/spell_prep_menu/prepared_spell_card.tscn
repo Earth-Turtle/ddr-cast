@@ -1,32 +1,40 @@
-[gd_scene load_steps=3 format=3 uid="uid://kp73d361vqal"]
+[gd_scene load_steps=5 format=3 uid="uid://kp73d361vqal"]
 
 [ext_resource type="Script" uid="uid://dv2vu52lyxilc" path="res://HUD/spell_prep_menu/PreparedSpellCard.cs" id="1_tcbtv"]
+[ext_resource type="PackedScene" uid="uid://dp1q0r3wu0pro" path="res://HUD/spell_inputs_row.tscn" id="2_xg3km"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mcgsm"]
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_xptaf"]
 
-[node name="PreparedSpellCard" type="Control"]
-layout_mode = 3
-anchors_preset = 0
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xptaf"]
+
+[node name="PreparedSpellCard" type="VBoxContainer"]
+offset_right = 436.0
+offset_bottom = 169.0
 script = ExtResource("1_tcbtv")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="SpellSelection" type="OptionButton" parent="VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 2
+
+[node name="SpellSelection" type="OptionButton" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_icons/arrow = SubResource("CompressedTexture2D_xptaf")
 selected = 0
 allow_reselect = true
-item_count = 2
+item_count = 3
 popup/item_0/text = "Fireball"
 popup/item_0/id = 0
 popup/item_1/text = "Ice Shard"
 popup/item_1/id = 1
+popup/item_2/text = "ReallyReallyLongTextToShowThisCanBeExpanded"
+popup/item_2/id = 2
 
-[node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
+[node name="RightBuffer" type="Control" parent="HBoxContainer"]
 layout_mode = 2
-theme_override_styles/separator = SubResource("StyleBoxEmpty_mcgsm")
+size_flags_horizontal = 3
 
-[node name="SpellInputs" type="HBoxContainer" parent="VBoxContainer"]
+[node name="SelectorArrowSeparator" type="HSeparator" parent="."]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_xptaf")
+
+[node name="SpellInputs" parent="." instance=ExtResource("2_xg3km")]
 layout_mode = 2

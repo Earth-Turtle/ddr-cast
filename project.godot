@@ -19,8 +19,6 @@ config/icon="res://icon.svg"
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
-window/size/window_width_override=1280
-window/size/window_height_override=720
 window/stretch/mode="viewport"
 window/stretch/aspect="expand"
 window/canvas_textures/default_texture_filter=0
@@ -28,6 +26,10 @@ window/canvas_textures/default_texture_filter=0
 [dotnet]
 
 project/assembly_name="ddr-cast"
+
+[gui]
+
+theme/custom="uid://dc7wr3jmpdv7h"
 
 [input]
 

@@ -44,13 +44,15 @@ public partial class ArrowIcon : TextureRect
 		}
 	}
 
-	public static List<ArrowIcon> DirectionsToIcons(IList<Direction> directions)
+	public static ArrowIcon DirectionToIcon(Direction direction)
 	{
-		return directions.Select(dir =>
-		{
-			var icon = new ArrowIcon();
-			icon.Direction = dir;
-			return icon;
-		}).ToList();
+		var icon = new ArrowIcon();
+		icon.Direction = direction;
+		return icon;
+	}
+
+	public static IReadOnlyList<ArrowIcon> DirectionsToIcons(IEnumerable<Direction> directions)
+	{
+		return directions.Select(DirectionToIcon).ToList();
 	}
 }

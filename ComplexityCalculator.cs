@@ -7,20 +7,6 @@ namespace ddrcast;
 
 public partial class ComplexityCalculator : Node
 {
-	public enum Direction
-	{
-		// Four main directions
-		Right,
-		Up,
-		Left,
-		Down,
-		// Plus supplements for hex directions if I decide to go with that
-		UpperRight,
-		LowerRight,
-		UpperLeft,
-		LowerLeft
-	}
-
 	private const double CompressabilityFactor = 0.5f;
 	private const double NoRepeatsFactor = 0.8f;
 	private const double EntropyFactor = 0.5f;
