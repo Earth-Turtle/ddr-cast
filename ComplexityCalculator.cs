@@ -11,7 +11,7 @@ public partial class ComplexityCalculator : Node
 	private const double NoRepeatsFactor = 0.8f;
 	private const double EntropyFactor = 0.5f;
 
-	public double GetComplexity(List<Direction> spellInput)
+	public double GetComplexity(IList<Direction> spellInput)
 	{
 		return BaseLengthMultiplier(spellInput) 
 		       * Math.Pow(
@@ -40,7 +40,7 @@ public partial class ComplexityCalculator : Node
 		return (spellInput.Count - 1) * 0.1 + 1;
 	}
 
-	private static double CompressabilityMultiplier(List<Direction> spellInput)
+	private static double CompressabilityMultiplier(IList<Direction> spellInput)
 	{
 		double frac = spellInput.Count / (1.0 + spellInput.Count - LempelZiv(spellInput).Item1);
 		return Math.Log10(9 + Math.Max(1, frac));
@@ -67,14 +67,14 @@ public partial class ComplexityCalculator : Node
 	private static (int, int) LempelZiv(IList<Direction> spellInput)
 	{
 		var encodingDict = new Dictionary<IList<Direction>, string>(new DirectionListComparer());
-		foreach (Direction dir in Enum.GetValues<Direction>())
+		foreach (var dir in Enum.GetValues<Direction>())
 			if (spellInput.Contains(dir)) 
 				encodingDict.Add(spellInput, encodingDict.Count.ToString());
 		
 		var workingString = new List<Direction>();
 		int outputCodes = 0;
 
-		foreach (Direction input in spellInput)
+		foreach (var input in spellInput)
 		{
 			var nextEncodingSymbol = workingString.Concat([input]).ToList();
 			if (encodingDict.ContainsKey(nextEncodingSymbol))

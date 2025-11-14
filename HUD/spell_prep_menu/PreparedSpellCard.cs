@@ -2,16 +2,15 @@ using System;
 using System.Collections.Generic;
 using Godot;
 using Godot.Collections;
-using GodotOnReady.Attributes;
 
 namespace ddrcast.HUD.spell_prep_menu;
 
 [Tool]
 public partial class PreparedSpellCard : Control
 {
-    [OnReadyGet("SpellInputs")] private SpellInputsRow _spellInputs;
-    [OnReadyGet("HBoxContainer/SpellSelection")] private OptionButton _spellSelection;
-    [OnReadyGet("HBoxContainer/RemoveButton")] private Button _removeButton;
+    [Export] public SpellInputsRow SpellInputs;
+    [Export] public OptionButton SpellSelection;
+    [Export] public Button RemoveButton;
     
     // Temporary until I get spell selection loaded or w/e
     private IList<SpellUiData> _spellChoices = SpellUiData.PlaceholderSpells;
@@ -25,7 +24,7 @@ public partial class PreparedSpellCard : Control
             _spellChoices = value;
             foreach (var spellUiData in value)
             {
-                _spellSelection?.AddIconItem(spellUiData.IconTexture, spellUiData.SpellName);
+                SpellSelection.AddIconItem(spellUiData.IconTexture, spellUiData.SpellName);
             }
         }
     }
@@ -33,33 +32,31 @@ public partial class PreparedSpellCard : Control
     [Export]
     public Array<Direction> ArrowDirections
     {
-        get => _spellInputs?.InputsDirection;
-        set => _spellInputs.InputsDirection = value;
-    }
-
-    [OnReady]
-    private void FillChoices()
-    {
-        foreach (var spellUiData in _spellChoices)
+        get => SpellInputs?.InputsDirection;
+        set
         {
-            _spellSelection?.AddIconItem(spellUiData.IconTexture, spellUiData.SpellName, spellUiData.SpellId);
+            if (SpellInputs != null) SpellInputs.InputsDirection = value;
         }
     }
 
-    [OnReady]
-    private void AttachButtonSignals()
+    public override void _Ready()
     {
-        _spellSelection.ItemSelected += index => SpellSelected?.Invoke(this, _spellChoices[(int)index]);
-        _removeButton.ButtonUp += QueueFree;
+        foreach (var spellUiData in _spellChoices)
+        {
+            SpellSelection.AddIconItem(spellUiData.IconTexture, spellUiData.SpellName, spellUiData.SpellId);
+        }
+        
+        SpellSelection.ItemSelected += index => SpellSelected?.Invoke(this, _spellChoices[(int)index]);
+        RemoveButton.ButtonUp += QueueFree;
     }
 
     public void AddArrow(Direction direction, int index = -1)
     {
-        _spellInputs?.AddInput(direction, index);
+        SpellInputs?.AddInput(direction, index);
     }
 
     public void RemoveArrow(int index = -1)
     {
-        _spellInputs?.RemoveInput(index);
+        SpellInputs?.RemoveInput(index);
     }
 }

@@ -15,14 +15,17 @@ border_width_right = 5
 border_width_bottom = 5
 border_color = Color(0.27379104, 0.8983377, 0.92984563, 1)
 
-[node name="SpellMenu" type="Control"]
+[node name="SpellMenu" type="Control" node_paths=PackedStringArray("SpellInputsRow", "PreparedSpells")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+focus_mode = 1
 script = ExtResource("1_4dg0e")
+SpellInputsRow = NodePath("OuterBorder/HBoxContainer/PendingInputsBackground/CenterContainer/SpellInputs")
+PreparedSpells = NodePath("OuterBorder/HBoxContainer/PreparedSpellsBackground/PreparedSpells")
 metadata/_edit_lock_ = true
 
 [node name="OuterBorder" type="MarginContainer" parent="."]

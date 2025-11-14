@@ -7,10 +7,14 @@
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xptaf"]
 
-[node name="PreparedSpellCard" type="VBoxContainer"]
+[node name="PreparedSpellCard" type="VBoxContainer" node_paths=PackedStringArray("SpellInputs", "SpellSelection", "RemoveButton")]
 offset_right = 436.0
 offset_bottom = 169.0
 script = ExtResource("1_tcbtv")
+SpellInputs = NodePath("SpellInputs")
+SpellSelection = NodePath("HBoxContainer/SpellSelection")
+RemoveButton = NodePath("HBoxContainer/RemoveButton")
+ArrowDirections = Array[int]([])
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 2

@@ -5,7 +5,4 @@
     <EnableDynamicLoading>true</EnableDynamicLoading>
     <RootNamespace>ddrcast</RootNamespace>
   </PropertyGroup>
-    <ItemGroup>
-        <PackageReference Include="GodotOnReady" Version="1.2.4"/>
-    </ItemGroup>
 </Project>

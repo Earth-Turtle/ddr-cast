@@ -1,30 +1,31 @@
 using Godot;
-using GodotOnReady.Attributes;
 
 namespace ddrcast.HUD.spell_prep_menu;
 
 public partial class SpellPrepMenu : Control
 {
-	[OnReadyGet("OuterBorder/HBoxContainer/PendingInputsBackground/CenterContainer/SpellInputs")] private SpellInputsRow _spellInputsRow;
-	[OnReadyGet("OuterBorder/HBoxContainer/PreparedSpellsBackground/PreparedSpells")] private VBoxContainer _preparedSpells;
-
-	public override void _GuiInput(InputEvent @event)
+	private static readonly PackedScene SpellCardScene = GD.Load<PackedScene>("res://HUD/spell_prep_menu/prepared_spell_card.tscn");
+	
+	[Export] public SpellInputsRow SpellInputsRow;
+	[Export] public VBoxContainer PreparedSpells;
+	
+	public override void _Input(InputEvent @event)
 	{
-		if (@event.IsAction("ui_accept"))
+		if (@event.IsActionPressed("ui_accept"))
 		{
 			// Consume the arrows in the prep area and add them to the left
-			var inputs = _spellInputsRow?.InputsDirection;
-			var preparedSpellCard = new PreparedSpellCard();
-			preparedSpellCard.SpellChoices= SpellUiData.PlaceholderSpells;
+			var inputs = SpellInputsRow?.InputsDirection;
+			var preparedSpellCard = SpellCardScene.Instantiate<PreparedSpellCard>();
+			PreparedSpells.AddChild(preparedSpellCard);
+			preparedSpellCard.SpellChoices = SpellUiData.PlaceholderSpells;
 			preparedSpellCard.ArrowDirections = inputs;
-			_preparedSpells.AddChild(preparedSpellCard);
 			return;
 		}
 
-		if (@event.IsAction("ui_cancel"))
+		if (@event.IsActionPressed("ui_cancel"))
 		{
 			// Remove the last arrow in the prep area
-			_spellInputsRow?.RemoveInput();
+			SpellInputsRow?.RemoveInput();
 			return;
 		}
 		
@@ -32,7 +33,7 @@ public partial class SpellPrepMenu : Control
 		if (dir is not null)
 		{
 			// spell input, add to list
-			_spellInputsRow?.AddInput(dir.Value);
+			SpellInputsRow?.AddInput(dir.Value);
 		}
 
 		// Unrecognized, do nothing
