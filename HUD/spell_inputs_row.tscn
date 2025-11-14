@@ -1,19 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://dp1q0r3wu0pro"]
+[gd_scene load_steps=2 format=3 uid="uid://dp1q0r3wu0pro"]
 
 [ext_resource type="Script" uid="uid://du4kw2awvr8f6" path="res://HUD/SpellInputsRow.cs" id="1_42kfn"]
-[ext_resource type="PackedScene" uid="uid://3kb862bhpge6" path="res://HUD/arrow_icon.tscn" id="2_ynhg0"]
 
 [node name="SpellInputs" type="HBoxContainer"]
 offset_right = 100.0
 offset_bottom = 100.0
 size_flags_vertical = 3
 script = ExtResource("1_42kfn")
-
-[node name="ArrowIcon" parent="." instance=ExtResource("2_ynhg0")]
-layout_mode = 2
-
-[node name="ArrowIcon2" parent="." instance=ExtResource("2_ynhg0")]
-layout_mode = 2
-
-[node name="ArrowIcon3" parent="." instance=ExtResource("2_ynhg0")]
-layout_mode = 2
+InputsDirection = Array[int]([])

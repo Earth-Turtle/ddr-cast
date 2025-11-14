@@ -1,15 +1,16 @@
-using Godot;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using ddrcast;
-using ddrcast.HUD;
+using Godot;
+using Godot.Collections;
 
+namespace ddrcast.HUD;
+
+[Tool]
 public partial class SpellInputsRow : HBoxContainer
 {
-    public IList<Direction> InputsDirection
+    [Export]
+    public Array<Direction> InputsDirection
     {
-        get => GetChildren().Select(icon => ((ArrowIcon)icon).Direction).ToList();
+        get => new(GetChildren().Select(icon => ((ArrowIcon)icon).Direction));
         set
         {
             foreach (var child in GetChildren())
@@ -30,7 +31,9 @@ public partial class SpellInputsRow : HBoxContainer
     /// <returns>The number of elements in the list after addition</returns>
     public int AddInput(Direction direction, int index = -1)
     {
-        AddChild(ArrowIcon.DirectionToIcon(direction));
+        var arrowIcon = ArrowIcon.DirectionToIcon(direction);
+        AddChild(arrowIcon);
+        MoveChild(arrowIcon, index);
         return GetChildren().Count;
     }
     

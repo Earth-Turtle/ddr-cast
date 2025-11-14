@@ -1,6 +1,19 @@
-[gd_scene load_steps=2 format=3 uid="uid://dhc1cc2xj8t05"]
+[gd_scene load_steps=4 format=3 uid="uid://dhc1cc2xj8t05"]
 
-[ext_resource type="Script" uid="uid://ckwjk4cjtjkmx" path="res://HUD/spell_prep_menu/spell_menu.gd" id="1_eenus"]
+[ext_resource type="Script" uid="uid://cwh37wuyibs6v" path="res://HUD/spell_prep_menu/SpellPrepMenu.cs" id="1_4dg0e"]
+[ext_resource type="PackedScene" uid="uid://dp1q0r3wu0pro" path="res://HUD/spell_inputs_row.tscn" id="2_uww2c"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kqg08"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0.39342728, 0.5888948, 0.96947426, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.27379104, 0.8983377, 0.92984563, 1)
 
 [node name="SpellMenu" type="Control"]
 layout_mode = 3
@@ -9,6 +22,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_4dg0e")
 metadata/_edit_lock_ = true
 
 [node name="OuterBorder" type="MarginContainer" parent="."]
@@ -26,12 +40,25 @@ metadata/_edit_lock_ = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="OuterBorder"]
 layout_mode = 2
+theme_override_constants/separation = 20
+metadata/_edit_lock_ = true
 
-[node name="InputsList" type="VBoxContainer" parent="OuterBorder/HBoxContainer"]
+[node name="PreparedSpellsBackground" type="PanelContainer" parent="OuterBorder/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_kqg08")
+
+[node name="PreparedSpells" type="VBoxContainer" parent="OuterBorder/HBoxContainer/PreparedSpellsBackground"]
 layout_mode = 2
 
-[node name="PendingInputDisplayArea" type="HBoxContainer" parent="OuterBorder/HBoxContainer"]
+[node name="PendingInputsBackground" type="PanelContainer" parent="OuterBorder/HBoxContainer"]
 layout_mode = 2
-script = ExtResource("1_eenus")
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_kqg08")
 
-[connection signal="input_complete" from="OuterBorder/HBoxContainer/PendingInputDisplayArea" to="." method="_on_pending_input_display_area_input_complete"]
+[node name="CenterContainer" type="CenterContainer" parent="OuterBorder/HBoxContainer/PendingInputsBackground"]
+layout_mode = 2
+
+[node name="SpellInputs" parent="OuterBorder/HBoxContainer/PendingInputsBackground/CenterContainer" instance=ExtResource("2_uww2c")]
+layout_mode = 2

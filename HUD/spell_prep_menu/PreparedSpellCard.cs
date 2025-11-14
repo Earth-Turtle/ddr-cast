@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using Godot;
+using Godot.Collections;
 using GodotOnReady.Attributes;
 
 namespace ddrcast.HUD.spell_prep_menu;
@@ -9,9 +9,12 @@ namespace ddrcast.HUD.spell_prep_menu;
 [Tool]
 public partial class PreparedSpellCard : Control
 {
-    [OnReadyGet("SpellInputs")] private HBoxContainer _arrowHBox;
+    [OnReadyGet("SpellInputs")] private SpellInputsRow _spellInputs;
     [OnReadyGet("HBoxContainer/SpellSelection")] private OptionButton _spellSelection;
-    private IList<SpellUiData> _spellChoices = new List<SpellUiData>();
+    [OnReadyGet("HBoxContainer/RemoveButton")] private Button _removeButton;
+    
+    // Temporary until I get spell selection loaded or w/e
+    private IList<SpellUiData> _spellChoices = SpellUiData.PlaceholderSpells;
     public event EventHandler<SpellUiData> SpellSelected;
 
     public IList<SpellUiData> SpellChoices
@@ -27,21 +30,11 @@ public partial class PreparedSpellCard : Control
         }
     }
 
-    public IList<Direction> ArrowDirections
+    [Export]
+    public Array<Direction> ArrowDirections
     {
-        get => _arrowHBox?.GetChildren().Select(node => ((ArrowIcon)node).Direction).ToList().AsReadOnly();
-        set
-        {
-            foreach (var child in _arrowHBox?.GetChildren()!)
-            {
-                child.QueueFree();
-            }
-
-            foreach (var icon in ArrowIcon.DirectionsToIcons(value))
-            {
-                _arrowHBox?.AddChild(icon);
-            }
-        }
+        get => _spellInputs?.InputsDirection;
+        set => _spellInputs.InputsDirection = value;
     }
 
     [OnReady]
@@ -54,18 +47,19 @@ public partial class PreparedSpellCard : Control
     }
 
     [OnReady]
-    private void AttachOptionSignal()
+    private void AttachButtonSignals()
     {
         _spellSelection.ItemSelected += index => SpellSelected?.Invoke(this, _spellChoices[(int)index]);
+        _removeButton.ButtonUp += QueueFree;
     }
 
-    public void AddArrow(Direction direction)
+    public void AddArrow(Direction direction, int index = -1)
     {
-        _arrowHBox?.AddChild(ArrowIcon.DirectionToIcon(direction));
+        _spellInputs?.AddInput(direction, index);
     }
 
-    public void RemoveLastArrow()
+    public void RemoveArrow(int index = -1)
     {
-        _arrowHBox?.GetChild(-1).QueueFree();
+        _spellInputs?.RemoveInput(index);
     }
 }

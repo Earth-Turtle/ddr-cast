@@ -1,3 +1,5 @@
+using Godot;
+
 namespace ddrcast;
 
 public enum Direction
@@ -12,4 +14,36 @@ public enum Direction
     UpRight,
     DownLeft,
     DownRight,
+}
+
+static class DirectionUtils
+{
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="event">An input event that needs to be translated to a spell direction</param>
+    /// <returns>The spell direction associated with this input event, or null if this event is not associated with one</returns>
+    public static Direction? FromInputEvent(InputEvent @event)
+    {
+        // True because hex directions not worked on yet
+        // This would be changed to check if hex directions are in use
+        // oh shoot or maybe even octal directions
+        if (true)
+        {
+            if (@event.IsAction("spell_input_down"))
+                return Direction.Down;
+            if (@event.IsAction("spell_input_up"))
+                return Direction.Up;
+            if (@event.IsAction("spell_input_left"))
+                return Direction.Left;
+            if (@event.IsAction("spell_input_right"))
+                return Direction.Right;
+        }
+        else
+        {
+            // Hex directions
+            
+        }
+        return null;
+    }
 }
